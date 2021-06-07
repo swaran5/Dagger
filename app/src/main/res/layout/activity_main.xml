@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+   <data>
+      <import type="android.view.View"/>
+
+      <variable
+          name="isLoading"
+          type="Boolean" />
+      <variable
+          name="isBottomLoading"
+          type="Boolean" />
+   </data>
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       tools:context=".MainActivity">
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/recyclerView" />
+
+      <include
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="300dp"
+          android:id="@+id/progressBarVisible"
+          layout="@layout/custom_dailog"
+          android:visibility="@{isLoading ? View.VISIBLE : View.GONE}" />
+
+      <include
+          android:id="@+id/progressBarBottom"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentBottom="true"
+          layout="@layout/custom_dailog"
+          android:visibility="@{isBottomLoading ? View.VISIBLE : View.GONE}"
+          />
+   </RelativeLayout>
+</layout>

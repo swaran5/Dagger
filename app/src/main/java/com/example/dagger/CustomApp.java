@@ -5,7 +5,7 @@ import android.app.Application;
 import com.example.dagger.model.retrofit.ServiceBuilder;
 
 public class CustomApp extends Application {
-    private NetworkComponent networkComponent;
+    public NetworkComponent networkComponent;
 
     @Override
     public void onCreate() {

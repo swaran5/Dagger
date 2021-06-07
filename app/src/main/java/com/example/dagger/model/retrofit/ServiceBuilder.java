@@ -15,7 +15,11 @@ public class ServiceBuilder {
     public ServiceBuilder(String url){
         this.url = url;
     }
-
+    @Provides
+    @Singleton
+    public EndPoints getEndpoints(Retrofit retrofit){
+        return retrofit.create(EndPoints.class);
+    }
     @Singleton
     @Provides
     public OkHttpClient.Builder provideClientBuilder(){

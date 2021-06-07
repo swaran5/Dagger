@@ -29,30 +29,32 @@ import retrofit2.Retrofit;
 
 public class MainViewModel extends ViewModel {
     @Inject
-    Retrofit retrofit;
+    EndPoints endPoints;
     public int totalpage;
     public MutableLiveData<List<Data>> Users = new MutableLiveData<>();
 
-    EndPoints request = retrofit.create(EndPoints.class);
+    public void init(Application application) {
+        ((CustomApp)application).getNetworkComponent().inject(MainViewModel.this);
+    }
 
-//    public MutableLiveData<List<Data>> getUsers(String page){
-//
-//            Call<Root> call = request.getUsers(page);
-//            call.enqueue(new retrofit2.Callback<Root>() {
-//                @Override
-//                public void onResponse(Call<Root> call, Response<Root> response) {
-//
-//                    Users.postValue(response.body().getData());
-//                    totalpage = response.body().getTotal_pages();
-//
-//
-//                }
-//
-//                @Override
-//                public void onFailure(Call<Root> call, Throwable t) {
-//
-//                }
-//            });
-//
-//        return Users;}
+    public MutableLiveData<List<Data>> getUsers(String page){
+
+            Call<Root> call = endPoints.getUsers(page);
+            call.enqueue(new retrofit2.Callback<Root>() {
+                @Override
+                public void onResponse(Call<Root> call, Response<Root> response) {
+
+                    Users.postValue(response.body().getData());
+                    totalpage = response.body().getTotal_pages();
+
+
+                }
+
+                @Override
+                public void onFailure(Call<Root> call, Throwable t) {
+
+                }
+            });
+
+        return Users;}
 }

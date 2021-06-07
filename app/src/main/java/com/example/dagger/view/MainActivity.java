@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    RecyclerView recyclerView;
     private MyAdapter myAdapter;
     public LinearLayoutManager manager;
     MainViewModel mainViewModel;
@@ -37,16 +36,14 @@ public class MainActivity extends AppCompatActivity {
 
             mainViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication()).create(MainViewModel.class);
         binding.setIsLoading(true);
-        recyclerView = findViewById(R.id.recyclerView);
-        manager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(manager);
-
         mainViewModel.getUsers(String.valueOf(page));
 
+        manager = new LinearLayoutManager(this);
+        binding.recyclerView.setLayoutManager(manager);
         myAdapter = new MyAdapter(MainActivity.this, User);
-        recyclerView.setAdapter(myAdapter);
+        binding.recyclerView.setAdapter(myAdapter);
 
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        binding.recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull @NotNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);

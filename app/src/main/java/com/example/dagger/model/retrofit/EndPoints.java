@@ -1,4 +1,6 @@
-package com.example.dagger;
+package com.example.dagger.model.retrofit;
+
+import com.example.dagger.model.retrofit.Root;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

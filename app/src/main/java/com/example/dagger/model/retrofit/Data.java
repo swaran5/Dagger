@@ -1,4 +1,4 @@
-package com.example.dagger;
+package com.example.dagger.model.retrofit;
 
 public class Data {
     private int id;

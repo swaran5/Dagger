@@ -1,4 +1,6 @@
-package com.example.dagger;
+package com.example.dagger.model.retrofit;
+
+import com.example.dagger.model.retrofit.Data;
 
 import java.util.List;
 

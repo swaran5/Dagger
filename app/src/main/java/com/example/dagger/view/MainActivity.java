@@ -1,27 +1,25 @@
-package com.example.dagger;
+package com.example.dagger.view;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.content.res.Configuration;
 import android.os.Bundle;
 
+import com.example.dagger.model.retrofit.Data;
+import com.example.dagger.viewModel.MainViewModel;
+import com.example.dagger.model.helper.MyAdapter;
+import com.example.dagger.R;
 import com.example.dagger.databinding.ActivityMainBinding;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;

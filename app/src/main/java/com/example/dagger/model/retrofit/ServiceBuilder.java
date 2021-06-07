@@ -1,4 +1,4 @@
-package com.example.dagger;
+package com.example.dagger.model.retrofit;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;

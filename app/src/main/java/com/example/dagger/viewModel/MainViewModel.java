@@ -1,7 +1,12 @@
-package com.example.dagger;
+package com.example.dagger.viewModel;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.example.dagger.model.retrofit.Data;
+import com.example.dagger.model.retrofit.EndPoints;
+import com.example.dagger.model.retrofit.Root;
+import com.example.dagger.model.retrofit.ServiceBuilder;
 
 import java.util.List;
 

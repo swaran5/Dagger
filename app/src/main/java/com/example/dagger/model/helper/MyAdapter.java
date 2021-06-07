@@ -1,4 +1,4 @@
-package com.example.dagger;
+package com.example.dagger.model.helper;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dagger.R;
+import com.example.dagger.model.retrofit.Data;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

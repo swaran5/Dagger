@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.dagger.CustomApp;
 import com.example.dagger.model.retrofit.Data;
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     public LinearLayoutManager manager;
     public MainViewModel mainViewModel;
     boolean isScrolling = false;
+    int i = 1;
     public List<Data> User = new ArrayList<>();
     int page = 1, currentItems, totalItems, scrollOutItems;
 
@@ -85,7 +89,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        binding.setIsEnabled(true);
+        binding.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Button is Enabled : " + i, Toast.LENGTH_SHORT).show();
+                i++;
+                binding.setIsEnabled(false);
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        binding.setIsEnabled(true);
+                    }
+                }, 500);
+            }
+        });
 
     }
 }

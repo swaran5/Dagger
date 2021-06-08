@@ -12,6 +12,9 @@
       <variable
           name="isBottomLoading"
           type="Boolean" />
+      <variable
+          name="isEnabled"
+          type="Boolean" />
    </data>
 
    <RelativeLayout
@@ -39,6 +42,14 @@
           android:layout_alignParentBottom="true"
           layout="@layout/custom_dailog"
           android:visibility="@{isBottomLoading ? View.VISIBLE : View.GONE}"
+          />
+      <com.google.android.material.button.MaterialButton
+          android:id="@+id/button"
+          android:layout_alignParentBottom="true"
+          android:enabled="@{isEnabled}"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="button"
           />
    </RelativeLayout>
 </layout>

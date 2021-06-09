@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private MyAdapter myAdapter;
     public LinearLayoutManager manager;
     public MainViewModel mainViewModel;
+    ActivityMainBinding binding;
     boolean isScrolling = false;
     int i = 1;
     public List<Data> User = new ArrayList<>();
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         mainViewModel.init(this.getApplication());
         mainViewModel.getUsers(String.valueOf(page));
 
-        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setIsLoading(true);
         manager = new LinearLayoutManager(this);
         binding.recyclerView.setLayoutManager(manager);
@@ -89,22 +91,20 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        binding.setIsEnabled(true);
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Button is Enabled : " + i, Toast.LENGTH_SHORT).show();
-                i++;
                 binding.setIsEnabled(false);
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        binding.setIsEnabled(true);
-                    }
-                }, 500);
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
             }
         });
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+            binding.setIsEnabled(true);
     }
 }
